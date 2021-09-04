@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+int kadane(int a[], int n)
+{
+    int curr_sum=0,max_sum=INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        curr_sum += a[i];
+        if(curr_sum<0)
+        {curr_sum = 0;}
+        max_sum = max(curr_sum,max_sum);
+    }
+    return max_sum;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {cin>>a[i];}
+    int wrapsum, nonwrapsum, totalsum=0;
+    nonwrapsum = kadane(a,n);
+    for(int i=0; i<n;i++)
+    {
+        totalsum+=a[i];
+        a[i]=-a[i];
+    }
+    wrapsum = totalsum + kadane(a,n);
+    cout<<max(wrapsum, nonwrapsum)<<"\n";
+
+    return 0;
+}
+
+/*
+INPUTS:
+7
+4 -4 6 -6 10 -11 12
+OUTPUT: 22
+*/
