@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,m,o,p;
+    cin>>n>>m>>o>>p;
+    int a[n][m], b[o][p], c[n][p];
+		//inputting the matrices
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+            {cin>>a[i][j];}
+    }
+    for(int i=0;i<o;i++)
+    {
+        for(int j=0;j<p;j++)
+            {cin>>b[i][j];}
+    }
+		//now calculating the final matrix
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<p;j++)
+        {
+            c[i][j] = 0;
+            for(int k=0;k<m;k++)
+            {
+                c[i][j]+=a[i][k]*b[k][j];
+            }
+            cout<<c[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+    return 0;
+}
+
+/* INPUTS:
+3 4 4 3
+2 4 1 2
+8 4 3 6
+1 7 9 5
+1 2 3
+4 5 6
+7 8 9
+4 5 6
+
+OUTPUT:
+33 42 51 
+69 90 111 
+112 134 156 
+*/
