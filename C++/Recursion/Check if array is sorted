@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool sorted(int arr[],int n)
+{
+    if(n==1)
+        return 1;
+
+    if(arr[n-1]>arr[n-2])
+        return sorted(arr, n-1);
+    else
+        return 0;
+}
+int main()
+{
+    int arr[] = {1,2,3,4,5};
+    cout<<sorted(arr,5)<<"\n";
+    return 0;
+}
